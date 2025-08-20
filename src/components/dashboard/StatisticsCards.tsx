@@ -219,7 +219,19 @@ export function StatisticsCards({ stats }: StatisticsCardsProps) {
                             {stat.title}
                           </div>
                         )}
-                        <div className="text-lg font-semibold text-gray-700 leading-tight">
+                        <div
+                          className={`text-lg font-semibold leading-tight ${
+                            index === 0
+                              ? "text-emerald-600" // Karyawan PKC - hijau terang
+                              : index === 1
+                              ? "text-orange-400" // PHL & Kontraktor - kontras dengan background amber
+                              : index === 2
+                              ? "text-[#AA00FF]" // Praktikan - ungu terang
+                              : index === 3
+                              ? "text-[#FF0000]" // Visitor - merah terang
+                              : "text-gray-700"
+                          }`}
+                        >
                           {stat.label}
                         </div>
                       </div>
@@ -232,10 +244,20 @@ export function StatisticsCards({ stats }: StatisticsCardsProps) {
                       </div>
                     </div>
                     <div className="flex-1 flex flex-col justify-center text-center">
-                      <div className="font-bold text-gray-900 mb-2">
+                      <div className="font-bold mb-2">
                         <AnimatedNumber
                           value={stat.value}
-                          className="font-bold text-gray-900"
+                          className={`font-bold ${
+                            index === 0
+                              ? "text-emerald-600" // Karyawan PKC - sesuai dengan icon emerald
+                              : index === 1
+                              ? "text-amber-600" // PHL & Kontraktor - sesuai dengan icon amber
+                              : index === 2
+                              ? "text-violet-600" // Praktikan - sesuai dengan icon violet
+                              : index === 3
+                              ? "text-rose-600" // Visitor - sesuai dengan icon rose
+                              : "text-gray-900"
+                          }`}
                           style={{ fontSize: "80px" }}
                           duration={1200}
                         />

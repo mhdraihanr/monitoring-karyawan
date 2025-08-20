@@ -95,11 +95,9 @@ export function AnimatedNumber({
     return displayValue.toLocaleString("id-ID");
   }, [displayValue]);
 
-  // Memoize color classes to prevent unnecessary re-calculations
+  // Remove color classes for text - only keep indicator colors
   const colorClasses = useMemo(() => {
-    if (changeDirection === "up") return "text-green-600";
-    if (changeDirection === "down") return "text-red-600";
-    return "";
+    return ""; // No color change for the animated number text
   }, [changeDirection]);
 
   // Memoize indicator classes for better performance
