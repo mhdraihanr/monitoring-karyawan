@@ -33,7 +33,7 @@ export function DashboardHeader() {
                     <span className="bg-gradient-to-r from-green-600 to-green-700 bg-clip-text text-transparent">
                       PUPUK KUJANG
                     </span>
-                    <span className="ml-4 text-gray-700">- GATE NPK2</span>
+                    <span className="ml-4 text-gray-800">- GATE NPK2</span>
                   </h1>
                 </div>
               </div>

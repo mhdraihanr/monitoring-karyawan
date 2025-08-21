@@ -1,7 +1,7 @@
 "use client";
 
 import { DashboardHeader } from "@/components/layout/DashboardHeader";
-import { StatisticsCards } from "@/components/dashboard/StatisticsCards";
+import { LayoutManager } from "@/components/dashboard/LayoutManager";
 import { useDataSimulation } from "@/hooks/useDataSimulation";
 
 export default function Dashboard() {
@@ -32,7 +32,7 @@ export default function Dashboard() {
       <div className="relative z-10 p-4">
         <DashboardHeader />
         <div className="mt-12">
-          <StatisticsCards stats={animatedStats} />
+          <LayoutManager stats={animatedStats} />
         </div>
         {/* Footer spacing */}
         <div className="h-8"></div>

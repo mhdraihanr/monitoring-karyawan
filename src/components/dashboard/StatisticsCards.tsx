@@ -35,7 +35,7 @@ export function StatisticsCards({ stats }: StatisticsCardsProps) {
       value: stats.karyawanPKC,
       icon: (
         <svg
-          className="w-8 h-8 text-emerald-600"
+          className="w-8 h-8 text-emerald-700"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -55,7 +55,7 @@ export function StatisticsCards({ stats }: StatisticsCardsProps) {
       value: stats.phlKontraktor,
       icon: (
         <svg
-          className="w-8 h-8 text-amber-600"
+          className="w-8 h-8 text-violet-700"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -75,7 +75,7 @@ export function StatisticsCards({ stats }: StatisticsCardsProps) {
       value: stats.praktikan,
       icon: (
         <svg
-          className="w-8 h-8 text-violet-600"
+          className="w-8 h-8 text-amber-700"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -95,7 +95,7 @@ export function StatisticsCards({ stats }: StatisticsCardsProps) {
       value: stats.visitor,
       icon: (
         <svg
-          className="w-8 h-8 text-rose-600"
+          className="w-8 h-8 text-rose-700"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -113,32 +113,32 @@ export function StatisticsCards({ stats }: StatisticsCardsProps) {
 
   const cardStyles: CardStyle[] = [
     {
-      bg: "bg-white/95",
-      accent: "from-emerald-500/10 to-green-500/15",
-      iconBg: "bg-emerald-500/10",
-      iconColor: "text-emerald-600",
-      border: "border-emerald-200/30",
+      bg: "bg-emerald-200/90",
+      accent: "from-emerald-500/20 to-green-500/25",
+      iconBg: "bg-emerald-500/15",
+      iconColor: "text-emerald-700",
+      border: "border-emerald-800/50",
     }, // Karyawan PKC
     {
-      bg: "bg-white/95",
-      accent: "from-amber-500/10 to-orange-500/15",
-      iconBg: "bg-amber-500/10",
-      iconColor: "text-amber-600",
-      border: "border-amber-200/30",
-    }, // PHL & Kontraktor
+      bg: "bg-violet-200/90",
+      accent: "from-violet-500/20 to-purple-500/25",
+      iconBg: "bg-violet-500/15",
+      iconColor: "text-violet-700",
+      border: "border-violet-800/50",
+    }, // PHL & Kontraktor (ditukar dengan Praktikan)
     {
-      bg: "bg-white/95",
-      accent: "from-violet-500/10 to-purple-500/15",
-      iconBg: "bg-violet-500/10",
-      iconColor: "text-violet-600",
-      border: "border-violet-200/30",
-    }, // Praktikan
+      bg: "bg-amber-200/90",
+      accent: "from-amber-500/20 to-orange-500/25",
+      iconBg: "bg-amber-500/15",
+      iconColor: "text-amber-700",
+      border: "border-amber-800/50",
+    }, // Praktikan (ditukar dengan PHL & Kontraktor)
     {
-      bg: "bg-white/95",
-      accent: "from-rose-500/10 to-pink-500/15",
-      iconBg: "bg-rose-500/10",
-      iconColor: "text-rose-600",
-      border: "border-rose-200/30",
+      bg: "bg-rose-200/90",
+      accent: "from-rose-500/20 to-pink-500/25",
+      iconBg: "bg-rose-500/15",
+      iconColor: "text-rose-700",
+      border: "border-rose-800/50",
     }, // Visitor
   ];
 
@@ -224,9 +224,9 @@ export function StatisticsCards({ stats }: StatisticsCardsProps) {
                             index === 0
                               ? "text-emerald-600" // Karyawan PKC - hijau terang
                               : index === 1
-                              ? "text-orange-400" // PHL & Kontraktor - kontras dengan background amber
+                              ? "text-[#AA00FF]" // PHL & Kontraktor - ungu terang (ditukar dengan Praktikan)
                               : index === 2
-                              ? "text-[#AA00FF]" // Praktikan - ungu terang
+                              ? "text-orange-400" // Praktikan - kontras dengan background amber (ditukar dengan PHL & Kontraktor)
                               : index === 3
                               ? "text-[#FF0000]" // Visitor - merah terang
                               : "text-gray-700"
@@ -238,7 +238,9 @@ export function StatisticsCards({ stats }: StatisticsCardsProps) {
                       <div
                         className={`w-12 h-12 flex items-center justify-center ${style.iconBg} rounded-2xl shadow-sm flex-shrink-0`}
                       >
-                        <div className={`w-6 h-6 ${style.iconColor}`}>
+                        <div
+                          className={`flex items-center justify-center ${style.iconColor}`}
+                        >
                           {stat.icon}
                         </div>
                       </div>
@@ -249,11 +251,11 @@ export function StatisticsCards({ stats }: StatisticsCardsProps) {
                           value={stat.value}
                           className={`font-bold ${
                             index === 0
-                              ? "text-emerald-600" // Karyawan PKC - sesuai dengan icon emerald
+                              ? "text-emerald-800" // Karyawan PKC - sesuai dengan icon emerald
                               : index === 1
-                              ? "text-amber-600" // PHL & Kontraktor - sesuai dengan icon amber
+                              ? "text-violet-600" // PHL & Kontraktor - sesuai dengan icon violet (ditukar dengan Praktikan)
                               : index === 2
-                              ? "text-violet-600" // Praktikan - sesuai dengan icon violet
+                              ? "text-amber-600" // Praktikan - sesuai dengan icon amber (ditukar dengan PHL & Kontraktor)
                               : index === 3
                               ? "text-rose-600" // Visitor - sesuai dengan icon rose
                               : "text-gray-900"
