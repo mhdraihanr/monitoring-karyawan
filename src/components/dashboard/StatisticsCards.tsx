@@ -113,30 +113,30 @@ export function StatisticsCards({ stats }: StatisticsCardsProps) {
 
   const cardStyles: CardStyle[] = [
     {
-      bg: "bg-emerald-200/90",
+      bg: "bg-emerald-500/90",
       accent: "from-emerald-500/20 to-green-500/25",
-      iconBg: "bg-emerald-500/15",
-      iconColor: "text-emerald-700",
+      iconBg: "bg-white", //"bg-emerald-500/15"
+      iconColor: "text-emerald-700", //"text-emerald-700",
       border: "border-emerald-800/50",
     }, // Karyawan PKC
     {
-      bg: "bg-violet-200/90",
+      bg: "bg-violet-500/90",
       accent: "from-violet-500/20 to-purple-500/25",
-      iconBg: "bg-violet-500/15",
+      iconBg: "bg-white", //"bg-violet-500/15",
       iconColor: "text-violet-700",
       border: "border-violet-800/50",
     }, // PHL & Kontraktor (ditukar dengan Praktikan)
     {
-      bg: "bg-amber-200/90",
+      bg: "bg-amber-500/90",
       accent: "from-amber-500/20 to-orange-500/25",
-      iconBg: "bg-amber-500/15",
+      iconBg: "bg-white", //"bg-amber-500/15",
       iconColor: "text-amber-700",
       border: "border-amber-800/50",
     }, // Praktikan (ditukar dengan PHL & Kontraktor)
     {
-      bg: "bg-rose-200/90",
+      bg: "bg-rose-500/90",
       accent: "from-rose-500/20 to-pink-500/25",
-      iconBg: "bg-rose-500/15",
+      iconBg: "bg-white", //"bg-rose-500/15",
       iconColor: "text-rose-700",
       border: "border-rose-800/50",
     }, // Visitor
@@ -215,20 +215,20 @@ export function StatisticsCards({ stats }: StatisticsCardsProps) {
                     <div className="flex items-start justify-between mb-4">
                       <div className="flex-1">
                         {stat.title && (
-                          <div className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-1 opacity-80">
+                          <div className="text-xs font-bold text-gray-900 uppercase tracking-wider mb-1 opacity-80">
                             {stat.title}
                           </div>
                         )}
                         <div
                           className={`text-lg font-semibold leading-tight ${
                             index === 0
-                              ? "text-emerald-600" // Karyawan PKC - hijau terang
+                              ? "text-white" //"text-emerald-600" // Karyawan PKC - hijau terang
                               : index === 1
-                              ? "text-[#AA00FF]" // PHL & Kontraktor - ungu terang (ditukar dengan Praktikan)
+                              ? "text-white" //"text-[#AA00FF]" // PHL & Kontraktor - ungu terang (ditukar dengan Praktikan)
                               : index === 2
-                              ? "text-orange-400" // Praktikan - kontras dengan background amber (ditukar dengan PHL & Kontraktor)
+                              ? "text-white" //"text-orange-400" // Praktikan - kontras dengan background amber (ditukar dengan PHL & Kontraktor)
                               : index === 3
-                              ? "text-[#FF0000]" // Visitor - merah terang
+                              ? "text-white" //"text-[#FF0000]" // Visitor - merah terang
                               : "text-gray-700"
                           }`}
                         >
@@ -251,13 +251,13 @@ export function StatisticsCards({ stats }: StatisticsCardsProps) {
                           value={stat.value}
                           className={`font-bold ${
                             index === 0
-                              ? "text-emerald-800" // Karyawan PKC - sesuai dengan icon emerald
+                              ? "text-white" //"text-emerald-900" // Karyawan PKC - sesuai dengan icon emerald
                               : index === 1
-                              ? "text-violet-600" // PHL & Kontraktor - sesuai dengan icon violet (ditukar dengan Praktikan)
+                              ? "text-white" //"text-violet-900" // PHL & Kontraktor - sesuai dengan icon violet (ditukar dengan Praktikan)
                               : index === 2
-                              ? "text-amber-600" // Praktikan - sesuai dengan icon amber (ditukar dengan PHL & Kontraktor)
+                              ? "text-white" //"text-amber-900" // Praktikan - sesuai dengan icon amber (ditukar dengan PHL & Kontraktor)
                               : index === 3
-                              ? "text-rose-600" // Visitor - sesuai dengan icon rose
+                              ? "text-white" //"text-rose-900" // Visitor - sesuai dengan icon rose
                               : "text-gray-900"
                           }`}
                           style={{ fontSize: "80px" }}

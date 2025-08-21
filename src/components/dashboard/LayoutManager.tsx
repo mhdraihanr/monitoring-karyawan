@@ -206,6 +206,77 @@ export function LayoutManager({ stats }: LayoutManagerProps) {
         </div>
       )}
 
+
+
+      {/* Statistics Cards with Layout Switching */}
+      <div
+        className={isFullscreen ? "cursor-pointer" : ""}
+        onClick={isFullscreen ? exitBrowserFullscreen : undefined}
+        title={isFullscreen ? "Klik untuk keluar dari layar penuh (ESC)" : ""}
+      >
+        {isAlternateLayout ? (
+          <AlternateStatisticsLayout stats={stats} />
+        ) : (
+          <StatisticsCards stats={stats} />
+        )}
+      </div>
+
+      {/* Enhanced Day Indicator - Hidden in fullscreen */}
+      {!isFullscreen && (
+        <div className="max-w-7xl mx-auto px-8 lg:px-12">
+          <div className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6 py-4">
+            <div className="flex items-center space-x-4">
+              <div className="text-sm text-gray-500 font-medium">
+                Hari Saat Ini:
+              </div>
+              <div className="flex space-x-2">
+                {dayNames.map((day, index) => (
+                  <div
+                    key={index}
+                    className={`px-3 py-1 rounded-full text-xs font-semibold transition-all duration-300 ${
+                      index === currentDay
+                        ? "bg-blue-500 text-white shadow-lg scale-110"
+                        : "bg-gray-100 text-gray-500"
+                    }`}
+                    title={fullDayNames[index]}
+                  >
+                    {day}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="flex items-center space-x-4">
+              <div className="text-sm text-gray-500 font-medium">
+                Layout Aktif:
+              </div>
+              <div
+                className={`px-3 py-1 rounded-full text-xs font-semibold ${
+                  isAlternateLayout
+                    ? "bg-orange-500 text-white"
+                    : "bg-green-500 text-white"
+                }`}
+              >
+                Layout {isAlternateLayout ? "B" : "A"}
+              </div>
+            </div>
+
+            <div className="flex items-center space-x-4">
+              <div className="text-sm text-gray-500 font-medium">Mode:</div>
+              <div
+                className={`px-3 py-1 rounded-full text-xs font-semibold ${
+                  isManualMode
+                    ? "bg-blue-500 text-white"
+                    : "bg-purple-500 text-white"
+                }`}
+              >
+                {isManualMode ? "Manual" : "Otomatis"}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Mode Control Panel - Hidden in fullscreen */}
       {!isFullscreen && (
         <div className="max-w-7xl mx-auto px-8 lg:px-12">
@@ -366,75 +437,6 @@ export function LayoutManager({ stats }: LayoutManagerProps) {
           </div>
         </div>
       )}
-
-      {/* Statistics Cards with Layout Switching */}
-      <div
-        className={isFullscreen ? "cursor-pointer" : ""}
-        onClick={isFullscreen ? exitBrowserFullscreen : undefined}
-        title={isFullscreen ? "Klik untuk keluar dari layar penuh (ESC)" : ""}
-      >
-        {isAlternateLayout ? (
-          <AlternateStatisticsLayout stats={stats} />
-        ) : (
-          <StatisticsCards stats={stats} />
-        )}
-      </div>
-
-      {/* Enhanced Day Indicator - Hidden in fullscreen */}
-      {!isFullscreen && (
-        <div className="max-w-7xl mx-auto px-8 lg:px-12">
-          <div className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6 py-4">
-            <div className="flex items-center space-x-4">
-              <div className="text-sm text-gray-500 font-medium">
-                Hari Saat Ini:
-              </div>
-              <div className="flex space-x-2">
-                {dayNames.map((day, index) => (
-                  <div
-                    key={index}
-                    className={`px-3 py-1 rounded-full text-xs font-semibold transition-all duration-300 ${
-                      index === currentDay
-                        ? "bg-blue-500 text-white shadow-lg scale-110"
-                        : "bg-gray-100 text-gray-500"
-                    }`}
-                    title={fullDayNames[index]}
-                  >
-                    {day}
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="flex items-center space-x-4">
-              <div className="text-sm text-gray-500 font-medium">
-                Layout Aktif:
-              </div>
-              <div
-                className={`px-3 py-1 rounded-full text-xs font-semibold ${
-                  isAlternateLayout
-                    ? "bg-orange-500 text-white"
-                    : "bg-green-500 text-white"
-                }`}
-              >
-                Layout {isAlternateLayout ? "B" : "A"}
-              </div>
-            </div>
-
-            <div className="flex items-center space-x-4">
-              <div className="text-sm text-gray-500 font-medium">Mode:</div>
-              <div
-                className={`px-3 py-1 rounded-full text-xs font-semibold ${
-                  isManualMode
-                    ? "bg-blue-500 text-white"
-                    : "bg-purple-500 text-white"
-                }`}
-              >
-                {isManualMode ? "Manual" : "Otomatis"}
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 }
@@ -448,19 +450,19 @@ function AlternateStatisticsLayout({ stats }: { stats: DashboardStats }) {
         {/* Top Row - Individual Statistics in 2x2 Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {/* Karyawan PKC */}
-          <div className="bg-emerald-200/90 border-emerald-300/50 backdrop-blur-xl rounded-3xl p-6 shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-[1.03] hover:-translate-y-2 border relative overflow-hidden group">
+          <div className="bg-emerald-500/90 border-emerald-800/50 backdrop-blur-xl rounded-3xl p-6 shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-[1.03] hover:-translate-y-2 border relative overflow-hidden group">
             <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/20 to-green-500/25 rounded-3xl opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
             <div className="relative z-10 flex flex-col h-full">
               <div className="flex items-start justify-between mb-4">
                 <div className="flex-1">
-                  <div className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-1 opacity-80">
+                  <div className="text-xs font-bold text-gray-900 uppercase tracking-wider mb-1 opacity-80">
                     Staff Tetap
                   </div>
-                  <div className="text-lg font-semibold leading-tight text-emerald-600">
+                  <div className="text-lg font-semibold leading-tight text-white">
                     Karyawan PKC
                   </div>
                 </div>
-                <div className="w-12 h-12 flex items-center justify-center bg-emerald-500/15 rounded-2xl shadow-sm flex-shrink-0">
+                <div className="w-12 h-12 flex items-center justify-center bg-white rounded-2xl shadow-sm flex-shrink-0">
                   <svg
                     className="w-6 h-6 text-emerald-700"
                     fill="none"
@@ -478,12 +480,12 @@ function AlternateStatisticsLayout({ stats }: { stats: DashboardStats }) {
               </div>
               <div className="flex-1 flex flex-col justify-center text-center">
                 <div
-                  className="font-bold text-emerald-800"
+                  className="font-bold text-white"
                   style={{ fontSize: "48px" }}
                 >
                   <AnimatedNumber
                     value={stats.karyawanPKC}
-                    className="font-bold text-emerald-800"
+                    className="font-bold text-white"
                     style={{ fontSize: "78px" }}
                     duration={1200}
                   />
@@ -493,19 +495,19 @@ function AlternateStatisticsLayout({ stats }: { stats: DashboardStats }) {
           </div>
 
           {/* PHL & Kontraktor */}
-          <div className="bg-violet-200/90 border-violet-300/50 backdrop-blur-xl rounded-3xl p-6 shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-[1.03] hover:-translate-y-2 border relative overflow-hidden group">
+          <div className="bg-violet-500/90 border-violet-800/50 backdrop-blur-xl rounded-3xl p-6 shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-[1.03] hover:-translate-y-2 border relative overflow-hidden group">
             <div className="absolute inset-0 bg-gradient-to-br from-violet-500/20 to-purple-500/25 rounded-3xl opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
             <div className="relative z-10 flex flex-col h-full">
               <div className="flex items-start justify-between mb-4">
                 <div className="flex-1">
-                  <div className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-1 opacity-80">
+                  <div className="text-xs font-bold text-gray-900 uppercase tracking-wider mb-1 opacity-80">
                     Tenaga Kontrak
                   </div>
-                  <div className="text-lg font-semibold leading-tight text-[#AA00FF]">
+                  <div className="text-lg font-semibold leading-tight text-white">
                     PHL & Kontraktor
                   </div>
                 </div>
-                <div className="w-12 h-12 flex items-center justify-center bg-violet-500/15 rounded-2xl shadow-sm flex-shrink-0">
+                <div className="w-12 h-12 flex items-center justify-center bg-white rounded-2xl shadow-sm flex-shrink-0">
                   <svg
                     className="w-6 h-6 text-violet-700"
                     fill="none"
@@ -523,12 +525,12 @@ function AlternateStatisticsLayout({ stats }: { stats: DashboardStats }) {
               </div>
               <div className="flex-1 flex flex-col justify-center text-center">
                 <div
-                  className="font-bold text-violet-600"
+                  className="font-bold text-white"
                   style={{ fontSize: "48px" }}
                 >
                   <AnimatedNumber
                     value={stats.phlKontraktor}
-                    className="font-bold text-violet-600"
+                    className="font-bold text-white"
                     style={{ fontSize: "78px" }}
                     duration={1200}
                   />
@@ -538,19 +540,19 @@ function AlternateStatisticsLayout({ stats }: { stats: DashboardStats }) {
           </div>
 
           {/* Praktikan */}
-          <div className="bg-amber-200/90 border-amber-300/50 backdrop-blur-xl rounded-3xl p-6 shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-[1.03] hover:-translate-y-2 border relative overflow-hidden group">
+          <div className="bg-amber-500/90 border-amber-800/50 backdrop-blur-xl rounded-3xl p-6 shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-[1.03] hover:-translate-y-2 border relative overflow-hidden group">
             <div className="absolute inset-0 bg-gradient-to-br from-amber-500/20 to-orange-500/25 rounded-3xl opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
             <div className="relative z-10 flex flex-col h-full">
               <div className="flex items-start justify-between mb-4">
                 <div className="flex-1">
-                  <div className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-1 opacity-80">
+                  <div className="text-xs font-bold text-gray-900 uppercase tracking-wider mb-1 opacity-80">
                     Program Magang
                   </div>
-                  <div className="text-lg font-semibold leading-tight text-orange-400">
+                  <div className="text-lg font-semibold leading-tight text-white">
                     Praktikan
                   </div>
                 </div>
-                <div className="w-12 h-12 flex items-center justify-center bg-amber-500/15 rounded-2xl shadow-sm flex-shrink-0">
+                <div className="w-12 h-12 flex items-center justify-center bg-white rounded-2xl shadow-sm flex-shrink-0">
                   <svg
                     className="w-6 h-6 text-amber-700"
                     fill="none"
@@ -568,12 +570,12 @@ function AlternateStatisticsLayout({ stats }: { stats: DashboardStats }) {
               </div>
               <div className="flex-1 flex flex-col justify-center text-center">
                 <div
-                  className="font-bold text-amber-600"
+                  className="font-bold text-white"
                   style={{ fontSize: "48px" }}
                 >
                   <AnimatedNumber
                     value={stats.praktikan}
-                    className="font-bold text-amber-600"
+                    className="font-bold text-white"
                     style={{ fontSize: "78px" }}
                     duration={1200}
                   />
@@ -583,19 +585,19 @@ function AlternateStatisticsLayout({ stats }: { stats: DashboardStats }) {
           </div>
 
           {/* Visitor */}
-          <div className="bg-rose-200/90 border-rose-300/50 backdrop-blur-xl rounded-3xl p-6 shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-[1.03] hover:-translate-y-2 border relative overflow-hidden group">
+          <div className="bg-rose-500/90 border-rose-800/50 backdrop-blur-xl rounded-3xl p-6 shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-[1.03] hover:-translate-y-2 border relative overflow-hidden group">
             <div className="absolute inset-0 bg-gradient-to-br from-rose-500/20 to-pink-500/25 rounded-3xl opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
             <div className="relative z-10 flex flex-col h-full">
               <div className="flex items-start justify-between mb-4">
                 <div className="flex-1">
-                  <div className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-1 opacity-80">
+                  <div className="text-xs font-bold text-gray-900 uppercase tracking-wider mb-1 opacity-80">
                     Tamu Perusahaan
                   </div>
-                  <div className="text-lg font-semibold leading-tight text-[#FF0000]">
+                  <div className="text-lg font-semibold leading-tight text-white">
                     Visitor
                   </div>
                 </div>
-                <div className="w-12 h-12 flex items-center justify-center bg-rose-500/15 rounded-2xl shadow-sm flex-shrink-0">
+                <div className="w-12 h-12 flex items-center justify-center bg-white rounded-2xl shadow-sm flex-shrink-0">
                   <svg
                     className="w-6 h-6 text-rose-700"
                     fill="none"
@@ -613,12 +615,12 @@ function AlternateStatisticsLayout({ stats }: { stats: DashboardStats }) {
               </div>
               <div className="flex-1 flex flex-col justify-center text-center">
                 <div
-                  className="font-bold text-rose-600"
+                  className="font-bold text-white"
                   style={{ fontSize: "48px" }}
                 >
                   <AnimatedNumber
                     value={stats.visitor}
-                    className="font-bold text-rose-600"
+                    className="font-bold text-white"
                     style={{ fontSize: "78px" }}
                     duration={1200}
                   />

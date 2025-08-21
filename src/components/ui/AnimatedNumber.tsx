@@ -107,8 +107,8 @@ export function AnimatedNumber({
       "absolute -top-1 -right-1 flex items-center justify-center w-5 h-5 rounded-full text-xs font-bold transition-all duration-300 shadow-lg";
     const colorClasses =
       changeDirection === "up"
-        ? "bg-green-500 text-white shadow-green-200"
-        : "bg-red-500 text-white shadow-red-200";
+        ? "bg-green-500 text-white shadow-green-700"
+        : "bg-red-500 text-white shadow-red-700";
     return `${baseClasses} ${colorClasses}`;
   }, [changeDirection]);
 
